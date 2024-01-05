@@ -18,7 +18,7 @@ const createSupabaseClient = async () => {
     return createClient<Database>(url as string, private_key as string);
 }
 
-export const useStoreBase = create<State & Actions>()(immer((set) => ({
+export const useStoreBase = create<State & Actions>()(immer((_set) => ({
 })));
 
 export const useStore = createSelectors(useStoreBase);

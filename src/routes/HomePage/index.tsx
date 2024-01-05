@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import User from "../../components/Avatar";
-import withTransitionAnimation from "../../HOCS/withTransitionAnimation";
 import { ToastContainer } from "react-toastify";
 
 const HomePageLayout = function () {

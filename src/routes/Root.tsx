@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { useStore } from "../store";
 import { Auth } from "@supabase/auth-ui-react";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { ToastContainer } from "react-toastify";
 // import { NextUIProvider } from "@nextui-org/react";
 
 function Root() {
