@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0;
+            height: 200px;
+            width: 400px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .spinner {
+            width: 64px;
+            height: 64px;
+            border: 8px solid;
+            border-color: forestgreen transparent forestgreen transparent;
+            border-radius: 50%;
+            animation: spin-anim 1.2s linear infinite;
+        }
+
+        @keyframes spin-anim {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="spinner"></div>
+</body>
+
+</html>

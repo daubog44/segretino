@@ -1,0 +1,67 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "segretino",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "updater": {
+      "windows": {
+        "installMode": "passive"
+      },
+      "active": true,
+      "endpoints": [
+        "https://releases.myapp.com/{{target}}/{{arch}}/{{current_version}}"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJGMjNCOTI3N0JDRDVGRkMKUldUOFg4MTdKN2tqTDYveTYrdmVjM3JKSlNNUWw5b0c1WlExUnJDZ2NLOHRjdzlLWXoyQnRHSm8K"
+    },
+    "allowlist": {
+      "all": true
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "shortDescription": "app for chat with friends in intimate!",
+      "category": "SocialNetworking",
+      "windows": {
+        "wix": {
+          "language": "it-IT"
+        }
+      },
+      "identifier": "segretino.com"
+    },
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost",
+      "devCsp": "default-src 'self'; img-src 'self' asset: https://asset.localhost"
+    },
+    "windows": [
+      {
+        "label": "main",
+        "center": true,
+        "transparent": true,
+        "title": "Segretino",
+        "contentProtected": true,
+        "decorations": false
+      },
+      {
+        "center": true,
+        "width": 400,
+        "height": 200,
+        "decorations": false,
+        "url": "splashscreen.html",
+        "resizable": false,
+        "label": "splashscreen"
+      }
+    ],
+    "systemTray": {
+      "iconPath": "./icons/icon.png"
+    }
+  }
+}

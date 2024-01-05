@@ -1,0 +1,35 @@
+[package]
+name = "segretino"
+version = "0.0.0"
+description = "A Tauri App"
+authors = ["you"]
+license = ""
+repository = ""
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1.4", features = [] }
+
+[dependencies]
+tauri-plugin-upload = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+tauri = { version = "1.5.2", features = [ "updater",
+    "system-tray",
+    "api-all",
+    "icon-ico",
+    "icon-png",
+] }
+anyhow = "1.0.75"
+dotenv = "0.15.0"
+window-shadows = "0.2.2"
+tauri-plugin-window-state = "0.1.0"
+serde = "1.0.192"
+window-vibrancy = "0.4.2"
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "react-toastify/dist/ReactToastify.css";
+
+@config "./../tailwind.config.js";
+
+@layer components {
+  .btn_app_bar {
+    @apply w-7 h-7 inline-flex justify-center items-center
+  }
+}
+
+
+@layer base {
+  *,
+    *::after,
+    *::before {
+      box-sizing: border-box;
+    }
+  
+    body {
+      @apply rounded-3xl h-screen w-screen m-0
+    }
+}
+
+.fadeIn {
+  animation: 0.5s fadeIn forwards;
+}
+
+.fadeOut {
+  animation: 0.5s fadeOut forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(-20px, 0);
+    opacity: 0;
+  }
+}
