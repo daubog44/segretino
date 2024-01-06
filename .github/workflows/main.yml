@@ -10,8 +10,11 @@ jobs:
 
     outputs:
       tag: ${{ steps.get_tag.outputs.value }}
+      tag_exists: ${{steps.tag_create.outputs.tag_exists}}
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: get specified property
         id: "get_tag"
         uses: zoexx/github-action-json-file-properties@release
@@ -30,6 +33,20 @@ jobs:
       - run: |
           echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
 
+      - name: Create Sentry release
+        id: "notify_sentry"
+        if: !steps.tag_create.outputs.tag_exists
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ vars.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+          # SENTRY_URL: https://sentry.io/
+        with:
+          environment: production
+          sourcemaps: "./"
+          version: ${{steps.get_tag.outputs.value}}
+
   release:
     needs: createTag
     permissions:
@@ -40,6 +57,7 @@ jobs:
         platform: [macos-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.platform }}
 
+    if: !needs.createTag.outputs.tag_exists
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
