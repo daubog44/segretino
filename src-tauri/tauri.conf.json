@@ -17,7 +17,7 @@
       },
       "active": true,
       "endpoints": [
-        "https://biblio-site-dist-git-main-daubog44.vercel.app/api/updater/{{current_version}}"
+        "https://jazzy-biscotti-b4c07a.netlify.app/api/updater/{{current_version}}?owner=daubog44&repo=segretino"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJGMjNCOTI3N0JDRDVGRkMKUldUOFg4MTdKN2tqTDYveTYrdmVjM3JKSlNNUWw5b0c1WlExUnJDZ2NLOHRjdzlLWXoyQnRHSm8K"
