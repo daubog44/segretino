@@ -1,4 +1,4 @@
-import { initSupabase, useStore } from "../store";
+import { initSupabase, useStore } from "@src/store";
 
 export async function loader() {
     if (!useStore.getState().supabase)

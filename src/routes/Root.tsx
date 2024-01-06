@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useStore } from "../store";
+import { useStore } from "@src/store";
 import { Auth } from "@supabase/auth-ui-react";
 import { SupabaseClient } from "@supabase/supabase-js";
 // import { NextUIProvider } from "@nextui-org/react";

@@ -6,7 +6,7 @@ import {
   // Import predefined theme
   ThemeSupa,
 } from "@supabase/auth-ui-shared";
-import { useStore } from "../store";
+import { useStore } from "@src/store";
 import ShortUniqueId from "short-unique-id";
 
 export default function LoginPage() {

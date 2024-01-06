@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { invoke } from "@tauri-apps/api/tauri";
 import { SupabaseClient, createClient } from '@supabase/supabase-js'
 import { immer } from 'zustand/middleware/immer';
-import { Database } from './../../database.types'
+import { Database } from '@root/database.types'
 import createSelectors from './createselectors';
 
 interface State {

@@ -1,6 +1,6 @@
 import { GoArrowLeft } from "react-icons/go";
 import { Link } from "react-router-dom";
-import withTransitionAnimation from "../../HOCS/withTransitionAnimation";
+import withTransitionAnimation from "@src/HOCS/withTransitionAnimation";
 import ContentProfilePage from "./Content";
 
 const Profile = function () {

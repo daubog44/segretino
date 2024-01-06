@@ -2,7 +2,7 @@ import { Auth } from "@supabase/auth-ui-react";
 import Avatar from "./Avatar";
 import { User } from "@supabase/supabase-js";
 import { CiLogout } from "react-icons/ci";
-import { useStore } from "../../store";
+import { useStore } from "@src/store";
 import { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";

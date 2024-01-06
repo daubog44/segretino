@@ -16,7 +16,8 @@ tauri-build = { version = "1.4", features = [] }
 tauri-plugin-upload = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
-tauri = { version = "1.5.2", features = [ "updater",
+tauri = { version = "1.5.4", features = [
+    "updater",
     "system-tray",
     "api-all",
     "icon-ico",

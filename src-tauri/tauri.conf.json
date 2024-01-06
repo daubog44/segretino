@@ -17,7 +17,7 @@
       },
       "active": true,
       "endpoints": [
-        "https://releases.myapp.com/{{target}}/{{arch}}/{{current_version}}"
+        "https://biblio-site-dist-git-main-daubog44.vercel.app/api/updater/{{current_version}}"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJGMjNCOTI3N0JDRDVGRkMKUldUOFg4MTdKN2tqTDYveTYrdmVjM3JKSlNNUWw5b0c1WlExUnJDZ2NLOHRjdzlLWXoyQnRHSm8K"
@@ -30,6 +30,13 @@
       "targets": "all",
       "shortDescription": "app for chat with friends in intimate!",
       "category": "SocialNetworking",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
       "windows": {
         "wix": {
           "language": "it-IT"
@@ -61,7 +68,8 @@
       }
     ],
     "systemTray": {
-      "iconPath": "./icons/icon.png"
+      "title": "segretino",
+      "iconPath": "icons/icon.png"
     }
   }
 }

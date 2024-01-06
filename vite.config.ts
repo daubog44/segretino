@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import * as path from 'path'
 import react from "@vitejs/plugin-react";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 
@@ -21,6 +22,10 @@ export default defineConfig(() => ({
   server: {
     port: 1420,
     strictPort: true,
+  },
+  resolve: {
+    alias: [{ find: '@src', replacement: path.resolve(__dirname, 'src') },
+    { find: '@root', replacement: path.resolve(__dirname) }],
   },
   // 3. to make use of `TAURI_DEBUG` and other env variables
   // https://tauri.studio/v1/api/config#buildconfig.beforedevcommand

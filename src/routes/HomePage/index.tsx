@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import User from "../../components/Avatar";
+import User from "@src/components/Avatar";
 import { ToastContainer } from "react-toastify";
 
 const HomePageLayout = function () {

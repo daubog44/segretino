@@ -1,8 +1,8 @@
-import Avatar from "../../components/Avatar/Avatar";
+import Avatar from "@src/components/Avatar/Avatar";
 import { Auth } from "@supabase/auth-ui-react";
 import { User } from "@supabase/supabase-js";
 import { useCallback, useRef, useState } from "react";
-import { useStore } from "../../store";
+import { useStore } from "@src/store";
 import { toast } from "react-toastify";
 
 function ContentProfilePage() {

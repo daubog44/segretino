@@ -6,7 +6,7 @@ import {
   VscChromeMinimize,
   VscChromeRestore,
 } from "react-icons/vsc";
-import logo from "../../src-tauri/icons/32x32.png";
+import logo from "@root/src-tauri/icons/32x32.png";
 
 const TitleBar = function () {
   const [changeIcon, setChangeIcon] = useState(true);
