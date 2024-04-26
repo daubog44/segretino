@@ -20,3 +20,4 @@ the app can be download [here](https://segretino-web-project.vercel.app)
 2.  User authentication via Supabase
 3.  Message persistence in Supabase database
 4.  Simple and intuitive UI
+5.  End-to-end encryption (E2EE) with private and public keys for each user
