@@ -1,0 +1,104 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  createTag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.get_tag.outputs.value }}
+      tag_exists: ${{steps.tag_create.outputs.tag_exists}}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: get specified property
+        id: "get_tag"
+        uses: zoexx/github-action-json-file-properties@release
+        with:
+          file_path: "./src-tauri/tauri.conf.json"
+          prop_path: "package.version"
+
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: ${{steps.get_tag.outputs.value}}
+          tag_exists_error: true
+          message: "Latest release"
+
+      # Print result using the action output.
+      - run: |
+          echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
+
+  release:
+    needs: createTag
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          - platform: "macos-latest" # for Arm based macs (M1 and above).
+            args: "--target aarch64-apple-darwin"
+          - platform: "macos-latest" # for Intel based macs.
+            args: "--target x86_64-apple-darwin"
+          - platform: "ubuntu-22.04" # for Tauri v1 you could replace this with ubuntu-20.04.
+            args: ""
+          - platform: "windows-latest"
+            args: ""
+
+    runs-on: ${{ matrix.settings.platform }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Install frontend dependencies
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: bun install --verbose # Change this to npm, yarn or pnpm.
+
+      - name: Build the app
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SUPABASE_URL: ${{ vars.TAURI_SUPABASE_URL }}
+          TAURI_SUPABASE_ANON_KEY: ${{ vars.TAURI_SUPABASE_ANON_KEY }}
+          TAURI_SUPABASE_PROJECT_ID: ${{vars.TAURI_SUPABASE_PROJECT_ID}}
+          SUPABASE_DB_PASSWORD: ${{vars.SUPABASE_DB_PASSWORD}}
+          TAURI_PRIVATE_KEY: ${{vars.TAURI_PRIVATE_KEY}}
+          TAURI_KEY_PASSWORD: ${{vars.TAURI_KEY_PASSWORD}}
+          TAURI_SITEKEY_CLOUD: ${{vars.TAURI_SITEKEY_CLOUD}}
+          TAURI_SECRET: ${{vars.TAURI_SECRET}}
+        with:
+          tauriScript: "bun run tauri"
+          tagName: ${{ needs.createTag.outputs.tag }} # This only works if your workflow triggers on new tags.
+          releaseName: "App Name ${{ needs.createTag.outputs.tag }}" # tauri-action replaces \_\_VERSION\_\_ with the app version.
+          releaseBody: "See the assets to download and install this version."
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.settings.args }}

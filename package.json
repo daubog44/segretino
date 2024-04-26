@@ -1,0 +1,47 @@
+{
+  "name": "segretino",
+  "private": true,
+  "version": "0.0.2",
+  "type": "module",
+  "scripts": {
+    "tailwind-run": "npx tailwindcss -i ./src/styles.css -o ./src/output.css --watch",
+    "tailwind-build": "npx tailwindcss -i ./src/styles.css -o ./src/output.css --minify",
+    "dev": "concurrently \"vite\" \"bun run tailwind-run\"",
+    "build": "bun run tailwind-build && tsc && vite build",
+    "preview": "vite preview",
+    "update-types": "supabase gen types typescript --project-id \"sgmvtnrndztzikdyaomm\" --schema public > ./src/types/supabase.ts",
+    "check-type": "tsc --noEmit && eslint",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@openpgp/web-stream-tools": "^0.1.1",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.39.8",
+    "@tauri-apps/api": "^1",
+    "@types/validator": "^13.11.9",
+    "immer": "^10.0.4",
+    "openpgp": "^5.11.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.22.3",
+    "react-toastify": "^10.0.5",
+    "short-unique-id": "^5.0.3",
+    "use-debounce": "^10.0.0",
+    "validator": "^13.11.0",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "daisyui": "latest",
+    "supabase": "^1.148.6",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.0.2",
+    "vite": "^5.0.0"
+  }
+}

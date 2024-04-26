@@ -1,0 +1,62 @@
+{
+  "build": {
+    "beforeDevCommand": "bun run dev",
+    "beforeBuildCommand": "bun run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "segretino",
+    "version": "0.0.2"
+  },
+  "tauri": {
+    "updater": {
+      "windows": {
+        "installMode": "passive"
+      },
+      "active": false,
+      "endpoints": [
+        "https://jazzy-biscotti-b4c07a.netlify.app/api/updater/{{current_version}}?owner=daubog44&repo=segretino"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDIxMUNFRDkwQ0UxNzNFMzcKUldRM1BoZk9rTzBjSWFNQmpJcFFJUkJvbVZGQTE3Mm1xUTU0YXJNSFM2Sit2eGpXV1hlZDZmTy8K"
+    },
+    "allowlist": {
+      "all": true
+    },
+    "windows": [
+      {
+        "label": "main",
+        "center": true,
+        "title": "segretino",
+        "contentProtected": true
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "shortDescription": "app for chat with friends in intimate!",
+      "category": "SocialNetworking",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "windows": {
+        "wix": {
+          "language": "it-IT"
+        }
+      },
+      "identifier": "segretino.com"
+    },
+    "systemTray": {
+      "title": "segretino",
+      "iconPath": "icons/icon.png"
+    }
+  }
+}
