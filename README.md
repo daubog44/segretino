@@ -7,8 +7,6 @@ Tauri is the best framework for make desktop app, the majority of applications i
 
 [![DEMO CAN'T LOAD](https://img.youtube.com/vi/zg779y5zSGY/0.jpg)](https://www.youtube.com/watch?v=zg779y5zSGY)
 
-the app can be download [here](https://segretino-web-project.vercel.app)
-
 # THE APP IS JUST AN ALPHA AND IS NECESSARY CODE REFACTORING AND IMPLEMENTATION OF FUNCTIONALITY THAT IS CURRENTLY MISSING
 
 **above there is the database schema:**
